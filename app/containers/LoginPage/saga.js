@@ -1,8 +1,8 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 
+import { LOCAL_STORAGE_ACCOUNT_KEY } from './constants';
 import { API } from '../../network';
 import { LOGIN } from 'containers/App/constants';
-import { LOCAL_STORAGE_ACCOUNT_KEY } from './constants';
 import { loginSuccess, loginError } from 'containers/App/actions';
 import { reactLocalStorage } from '../../utils';
 
