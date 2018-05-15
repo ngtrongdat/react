@@ -1,6 +1,7 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 
-import { LOCAL_STORAGE_ACCOUNT_KEY } from './constants';
+import { LOCAL_STORAGE_ACCOUNT_KEY } from 'containers/App/constants';
 import { API } from '../../network';
 import { LOGIN } from 'containers/App/constants';
 import { loginSuccess, loginError } from 'containers/App/actions';
@@ -13,6 +14,7 @@ export function* doLogin(args) {
     const account = yield call(API.login, args.loginInfo, deviceId);
     yield put(loginSuccess(account));
     yield call(reactLocalStorage.setObject, LOCAL_STORAGE_ACCOUNT_KEY, account.responseData);
+    yield put(push('/'));
   } catch (err) {
     yield put(loginError(err));
   }

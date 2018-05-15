@@ -11,6 +11,8 @@
 
 export const DEFAULT_LOCALE = 'en';
 
+export const LOCAL_STORAGE_ACCOUNT_KEY = 'prism-account';
+
 export const LOAD_REPOS = 'app/App/LOAD_REPOS';
 export const LOAD_REPOS_SUCCESS = 'app/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'app/App/LOAD_REPOS_ERROR';
