@@ -18,7 +18,9 @@ import {
   LOAD_REPOS_ERROR,
   LOGIN,
   LOGIN_SUCCESS,
-  LOGIN_ERROR
+  LOGIN_ERROR,
+  SHOW_ALERT,
+  HIDE_ALERT
 } from './constants';
 
 // The initial state of the App
@@ -30,6 +32,7 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
+  systemAlert: false,
 });
 
 function appReducer(state = initialState, action) {
@@ -59,6 +62,14 @@ function appReducer(state = initialState, action) {
     case LOGIN_ERROR:
       return state
         .set('loading', false);
+    case SHOW_ALERT:
+      let alerts = state.get('systemAlert') || [];
+      alerts.push(action.message);
+      return state
+        .set('systemAlert', alerts);
+    case HIDE_ALERT:
+      return state
+        .set('systemAlert', false);    
     default:
       return state;
   }

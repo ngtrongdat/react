@@ -20,6 +20,8 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
+import Header from 'components/Header';
+
 import { LOCAL_STORAGE_ACCOUNT_KEY } from 'containers/App/constants';
 import { reactLocalStorage } from 'utils';
 
@@ -33,20 +35,23 @@ export class PrivateRoute extends React.Component { // eslint-disable-line react
   render() {
     let Component = this.props.component;
     return (
-      <Route
-        render={props =>
-          this.authentication.token ? (
-            <Component {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: props.location }
-              }}
-            />
-          )
-        }
-      />
+      <div>
+        <Header />
+        <Route
+          render={props =>
+            this.authentication.token ? (
+              <Component {...props} />
+            ) : (
+              <Redirect
+                to={{
+                  pathname: "/login",
+                  state: { from: props.location }
+                }}
+              />
+            )
+          }
+        />
+      </div>
     );
   }
 }

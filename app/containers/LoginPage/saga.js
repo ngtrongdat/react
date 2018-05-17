@@ -4,8 +4,9 @@ import { push } from 'react-router-redux';
 import { LOCAL_STORAGE_ACCOUNT_KEY } from 'containers/App/constants';
 import { API } from '../../network';
 import { LOGIN } from 'containers/App/constants';
-import { loginSuccess, loginError } from 'containers/App/actions';
+import { loginSuccess, loginError, showAlert } from 'containers/App/actions';
 import { reactLocalStorage } from '../../utils';
+import { Messages } from '../../constants';
 
 export function* doLogin(args) {
   try {
@@ -15,6 +16,7 @@ export function* doLogin(args) {
     yield put(loginSuccess(account));
     yield call(reactLocalStorage.setObject, LOCAL_STORAGE_ACCOUNT_KEY, account.responseData);
     yield put(push('/'));
+    yield put(showAlert({type: 'success', message: Messages.loginSuccess}));
   } catch (err) {
     yield put(loginError(err));
   }

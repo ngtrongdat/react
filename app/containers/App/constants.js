@@ -19,3 +19,6 @@ export const LOAD_REPOS_ERROR = 'app/App/LOAD_REPOS_ERROR';
 export const LOGIN = 'app/App/LOGIN';
 export const LOGIN_SUCCESS = 'app/App/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'app/App/LOGIN_ERROR';
+
+export const SHOW_ALERT = 'app/APP/SHOW_ALERT';
+export const HIDE_ALERT = 'app/APP/HIDE_ALERT';

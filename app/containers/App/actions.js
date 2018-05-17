@@ -21,7 +21,9 @@ import {
   LOAD_REPOS_ERROR,
   LOGIN,
   LOGIN_SUCCESS,
-  LOGIN_ERROR
+  LOGIN_ERROR,
+  SHOW_ALERT,
+  HIDE_ALERT
 } from './constants';
 
 /**
@@ -86,3 +88,15 @@ export function loginError(loginInfo) {
   };
 }
 
+export function showAlert(message) {
+  return {
+    type: SHOW_ALERT,
+    message
+  };
+}
+
+export function hideAlert(loginInfo) {
+  return {
+    type: HIDE_ALERT
+  };
+}
