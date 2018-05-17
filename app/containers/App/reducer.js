@@ -19,8 +19,7 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  SHOW_ALERT,
-  HIDE_ALERT
+  SHOW_ALERT
 } from './constants';
 
 // The initial state of the App
@@ -63,13 +62,8 @@ function appReducer(state = initialState, action) {
       return state
         .set('loading', false);
     case SHOW_ALERT:
-      let alerts = state.get('systemAlert') || [];
-      alerts.push(action.message);
       return state
-        .set('systemAlert', alerts);
-    case HIDE_ALERT:
-      return state
-        .set('systemAlert', false);    
+        .set('systemAlert', action.message);
     default:
       return state;
   }

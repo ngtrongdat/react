@@ -22,8 +22,7 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  SHOW_ALERT,
-  HIDE_ALERT
+  SHOW_ALERT
 } from './constants';
 
 /**
@@ -92,11 +91,5 @@ export function showAlert(message) {
   return {
     type: SHOW_ALERT,
     message
-  };
-}
-
-export function hideAlert(loginInfo) {
-  return {
-    type: HIDE_ALERT
   };
 }

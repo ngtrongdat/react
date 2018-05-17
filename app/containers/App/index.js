@@ -37,7 +37,7 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 export class App extends React.PureComponent {
-
+  
   render(){
     const { alerts } = this.props;
     const alertsProps = {
