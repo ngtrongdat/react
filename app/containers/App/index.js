@@ -18,6 +18,7 @@ import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import HorsePage from 'containers/HorsePage/Loadable';
 import PrivateRoute from 'containers/PrivateRoute';
 import SystemAlert from 'components/SystemAlert';
 import Footer from 'components/Footer';
@@ -50,6 +51,7 @@ export class App extends React.PureComponent {
           <Route exact path="/" component={HomePage} />
           <PrivateRoute path="/features" component={FeaturePage} />
           <Route path="/login" component={LoginPage} />
+          <PrivateRoute path="/horse" component={HorsePage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
         <Footer />

@@ -18,4 +18,8 @@ export default defineMessages({
     id: 'boilerplate.components.Header.login',
     defaultMessage: 'Login',
   },
+  horse: {
+    id: 'boilerplate.components.Header.horse',
+    defaultMessage: 'Horse',
+  },
 });

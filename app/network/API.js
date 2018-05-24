@@ -3,6 +3,8 @@ import { AppConfig, Env } from '../constants';
 import Fingerprint2 from 'fingerprintjs2';
 import md5 from 'md5';
 
+import * as AccessTokenInterceptor from './interceptors/accessToken';
+
 const getInstance = (env) => {
   const instance = axios.create({
     baseURL: AppConfig.API_BASE_URL[env],
@@ -24,17 +26,17 @@ const getInstance = (env) => {
   //   LogInterceptor.responseError,
   // );
 
-  // instance.interceptors.request.use(
-  //   AccessTokenInterceptor.addAccessToken,
-  //   AccessTokenInterceptor.onRejected
-  // );
+  instance.interceptors.request.use(
+    AccessTokenInterceptor.addAccessToken,
+    AccessTokenInterceptor.onRejected
+  );
   return instance;
 }
 
 
 const API = {
-  env: Env.test,
-  instance: getInstance(Env.test),
+  env: Env.prepro,
+  instance: getInstance(Env.prepro),
 };
 
 /**
@@ -63,6 +65,19 @@ API.login = (loginInfo, deviceId) => {
   return API.instance.post('/login', data, {
     headers: { ...headers },
   })
+  .then((response) => {
+    return response.data;
+  })
+  .catch((error) => {
+    throw error;
+  });
+};
+
+/**
+ * Horse API
+ */
+API.getHorsesList = (request) => {
+  return API.instance.post('/horse/list', request)
   .then((response) => {
     return response.data;
   })
