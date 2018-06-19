@@ -28,6 +28,7 @@ import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import Can from 'components/Can';
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -84,6 +85,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <ReposList {...reposListProps} />
           </Section>
         </div>
+        <Can I="READ" a="HORSE_PROFILE">
+          <button>Create Post</button>
+        </Can>
       </article>
     );
   }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AppConfig, Env } from '../constants';
+import { AppConfig, Env, Endpoints } from '../constants';
 import Fingerprint2 from 'fingerprintjs2';
 import md5 from 'md5';
 
@@ -35,8 +35,8 @@ const getInstance = (env) => {
 
 
 const API = {
-  env: Env.prepro,
-  instance: getInstance(Env.prepro),
+  env: Env.test,
+  instance: getInstance(Env.test),
 };
 
 /**
@@ -62,7 +62,7 @@ API.login = (loginInfo, deviceId) => {
     deviceId: deviceId,
   };
 
-  return API.instance.post('/login', data, {
+  return API.instance.post(Endpoints.LOGIN_URL, data, {
     headers: { ...headers },
   })
   .then((response) => {
@@ -77,7 +77,7 @@ API.login = (loginInfo, deviceId) => {
  * Horse API
  */
 API.getHorsesList = (request) => {
-  return API.instance.post('/horse/list', request)
+  return API.instance.post(Endpoints.HORSE_LIST_URL, request)
   .then((response) => {
     return response.data;
   })
